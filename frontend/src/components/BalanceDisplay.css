@@ -1,0 +1,184 @@
+.balance-display {
+  margin-top: 30px;
+  padding: 32px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.2), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.2), transparent 55%),
+    linear-gradient(135deg, #1d4ed8 0%, #6d28d9 50%, #ec4899 100%);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-display.animating {
+  animation: backgroundPulse 2s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  }
+}
+
+.balance-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.balance-label {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.balance-amount {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: balancePop 0.6s ease-out;
+}
+
+@keyframes balancePop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ff6b6b;
+  animation: confettiFall 3s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Party Popper Emojis */
+.party-popper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.popper {
+  position: absolute;
+  font-size: 40px;
+  animation: popperFloat 2s ease-in-out infinite;
+}
+
+.popper-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.popper-2 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 0.3s;
+}
+
+.popper-3 {
+  bottom: 25%;
+  left: 20%;
+  animation-delay: 0.6s;
+}
+
+.popper-4 {
+  bottom: 30%;
+  right: 10%;
+  animation-delay: 0.9s;
+}
+
+.popper-5 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 1.2s;
+  font-size: 50px;
+}
+
+@keyframes popperFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) rotate(10deg) scale(1.2);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-10deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-15px) rotate(5deg) scale(1.15);
+  }
+}
+
+/* Additional floating particles */
+.balance-display.animating::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: particleFloat 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(20px, -20px);
+    opacity: 0.6;
+  }
+}
